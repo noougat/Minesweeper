@@ -95,11 +95,19 @@ public class MSButton
     {
         clicked = true;
         //your code here
-        if(keyPressed)
-        marked = true;
-        marked = false;
-        //if(marked == false)
-        //clicked = false;
+        if(keyPressed==true)
+        {
+        marked = !marked;
+        if(marked == false)
+        clicked = false;
+        }
+        else
+        if(bombs.contains(this))
+        System.out.println("hi");
+        else
+        if(this.countBombs(this.r, this.c)>0)
+        label = "" + countBombs(this.r, this.c);
+        this.setLabel(label);
        
     }
 
@@ -134,9 +142,9 @@ public class MSButton
       
         int numBombs = 0;
         //your code here
-        for(int i = row-1; i < row+1; i++)
+        for(int i = row-1; i < row+2; i++)
         {
-        for(int j = col-1; j < col+1; j++)
+        for(int j = col-1; j < col+2; j++)
         if(this.isValid(i,j) && bombs.contains(buttons[i][j]))
         numBombs++;
         }
